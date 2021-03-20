@@ -21,8 +21,11 @@ public class Order {
         this.date = LocalDateTime.now();
     }
 
-    public void addItem(Product prod, int quantity) {
-        items.add(new OrderItem(prod, quantity));
+    public void addItem(Product prod, int quantity) throws NotEnoughQuantityException {
+        if(quantity <= prod.getQuantity()){
+            items.add(new OrderItem(prod, quantity));
+            prod.setQuantity(prod.getQuantity()-quantity);
+        }
     }
 
     public double getTotal() {

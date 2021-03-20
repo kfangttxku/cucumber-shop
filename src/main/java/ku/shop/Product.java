@@ -1,8 +1,8 @@
 package ku.shop;
 
 public class Product {
-    private double price;
     private String name;
+    private double price;
     private int quantity;
 
     public Product(String name, double price, int quantity) {
@@ -25,7 +25,7 @@ public class Product {
         this.name = name;
     }
     public void setPrice(double price) {
-        if (price < 0)
+        if (price <= 0)
             throw new IllegalArgumentException("Price must be positive");
         this.price = price;
     }
